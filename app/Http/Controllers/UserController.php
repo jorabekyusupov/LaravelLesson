@@ -11,7 +11,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::query()
-            ->select(['id', 'firstname', 'phone', 'created_at', 'updated_at'])
+            ->select(['id', 'firstname','lastname', 'phone', 'created_at', 'updated_at'])
             ->orderByDesc('id')
             ->paginate(25);
 
@@ -30,5 +30,25 @@ class UserController extends Controller
         $data = $request->validated();
         User::query()->create($request->all());
         return redirect()->route('users.index');
+    }
+    public function edit($id)
+    {
+        $users = User::query()->find($id);
+/*        return  response()->json($users);*/
+        return view('users.edit', compact('users'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = User::query()->find($id);
+        $data->update($request->all());
+        return redirect()->route('users.index');
+    }
+
+    public function delete($id)
+    {
+        $users = User::query()->findOrFail($id)->delete();
+        return redirect()->route('users.index');
+
     }
 }
