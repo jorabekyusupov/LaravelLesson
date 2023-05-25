@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserCreateRequest;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,15 +15,44 @@ class UserController extends Controller
             ->select(['id', 'firstname','lastname', 'phone', 'created_at', 'updated_at'])
             ->orderByDesc('id')
             ->paginate(25);
-
 //        return view('users', ['users' => $users]);
         return view('users.index', compact(['users']));
+    }
+    protected function index_order()
+    {
+        $orders = Order::query()
+            ->select(['id','user_id','street','total_amount','total_cost', 'created_at', 'updated_at'])
+            ->orderByDesc('id')
+            ->paginate(15);
+        return view('orders.index', compact(['orders']));
     }
 
     public function create()
     {
-
         return view('users.create');
+    }
+    public function create_order()
+    {
+        $users = User::query()
+            ->select('user_id');
+        $regions = Order::query()
+            ->select('region_id');
+        $addresses = Order::query()
+            ->select('address_id');
+        $deliveries = [
+            [
+                'id'=> 1,
+                'name'=>'Express',
+                'price'=>10000
+            ],
+            [
+                'id'=> 2,
+                'name'=>'Standard',
+                'price'=>5000
+            ]
+        ];
+
+        return view('orders.create', compact(['users', 'regions', 'deliveries', 'addresses' ]));
     }
 
     public function store(UserCreateRequest $request)

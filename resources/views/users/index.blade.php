@@ -17,6 +17,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Firstname</th>
+                    <th>Lastname</th>
                     <th>Phone</th>
                     <th>Created at</th>
                     <th>Updated at</th>
@@ -28,6 +29,7 @@
                     <tr>
                         <td>{{$user->id}}</td>
                         <td>{{$user->firstname}}</td>
+                        <td>{{$user->lastname}}</td>
                         <td>{{$user->phone}}</td>
                         <td>{{$user->created_at}}</td>
                         <td>{{$user->updated_at}}</td>

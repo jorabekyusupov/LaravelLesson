@@ -31,7 +31,7 @@
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                     <a class="nav-link" href="{{route('users.index')}}">Users</a>
-
+                    <a class="nav-link" href="{{route('orders.index')}}">Orders</a>
                 </div>
             </div>
         </div>

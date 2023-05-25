@@ -24,3 +24,5 @@ Route::post('/users/store', [UserController::class, 'store'])->name('users.store
 Route::get('/users/edit/{id}', [UserController::class,'edit'])->name('users.edit');
 Route::put('/users/update/{id}', [UserController::class,'update'])->name('users.update');
 Route::delete('/users/delete/{id}', [UserController::class,'delete'])->name('users.delete');
+Route::get('/orders', [UserController::class, 'index_order'])->name('orders.index');
+Route::get('/orders/create', [UserController::class, 'create_order'])->name('orders.create');
