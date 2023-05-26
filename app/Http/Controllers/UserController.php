@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrderCreateRequest;
 use App\Http\Requests\UserCreateRequest;
 use App\Models\Order;
 use App\Models\User;
@@ -55,6 +56,19 @@ class UserController extends Controller
         return view('orders.create', compact(['users', 'regions', 'deliveries', 'addresses' ]));
     }
 
+    public function store_order(OrderCreateRequest $request)
+    {
+        $data = $request->validated();
+        $order = [
+            'user_id'=>$data['user_id'],
+            'address_id'=>$data['address_id'],
+            'delivery_id'=>$data['delivery_id'],
+            'total_price'=>$data['total_price'],
+            'status'=>$data['status']
+        ];
+        $orderModel = Order::query()->create($order);
+        return redirect()->route('orders.index');
+    }
     public function store(UserCreateRequest $request)
     {
         $data = $request->validated();
