@@ -34,12 +34,14 @@ class UserController extends Controller
     }
     public function create_order()
     {
-        $users = User::query()
-            ->select('user_id');
-        $regions = Order::query()
-            ->select('region_id');
-        $addresses = Order::query()
-            ->select('address_id');
+        $query = Order::query();
+        $users = $query->get();
+        $regions = $query
+        ->select('region_id')->where('region_id','!=',null)->get();
+        $addresses = $query
+            ->select('address_id')->where('address_id','!=',null)->get();
+        $statuses = $query
+            ->select('status')->where('status','!=',null)->get();
         $deliveries = [
             [
                 'id'=> 1,
@@ -53,13 +55,15 @@ class UserController extends Controller
             ]
         ];
 
-        return view('orders.create', compact(['users', 'regions', 'deliveries', 'addresses' ]));
+        return view('orders.create', compact(['users', 'regions', 'deliveries', 'addresses', 'statuses']));
     }
 
     public function store_order(OrderCreateRequest $request)
     {
         $data = $request->validated();
+        dd($data);
         $order = [
+            'name'=>$data['name'],
             'user_id'=>$data['user_id'],
             'address_id'=>$data['address_id'],
             'delivery_id'=>$data['delivery_id'],
