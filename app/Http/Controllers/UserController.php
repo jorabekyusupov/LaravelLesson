@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\OrderCreateRequest;
 use App\Http\Requests\UserCreateRequest;
 use App\Models\Order;
+use App\Models\Region;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -34,14 +35,23 @@ class UserController extends Controller
     }
     public function create_order()
     {
-        $query = Order::query();
-        $users = $query->get();
-        $regions = $query
-        ->select('region_id')->where('region_id','!=',null)->get();
-        $addresses = $query
-            ->select('address_id')->where('address_id','!=',null)->get();
-        $statuses = $query
-            ->select('status')->where('status','!=',null)->get();
+        $regions = Region::query()->whereNull('parent_id')->get();
+        $users = User::query()->get();
+        $statuses= [
+            [
+                'id'=> 1,
+                'name'=>'new'
+            ],
+            [
+                'id'=> 2,
+                'name'=>'pending'
+            ],
+            [
+                'id'=> 3,
+                'name'=>'confirmed'
+            ]
+        ];
+
         $deliveries = [
             [
                 'id'=> 1,
@@ -55,7 +65,7 @@ class UserController extends Controller
             ]
         ];
 
-        return view('orders.create', compact(['users', 'regions', 'deliveries', 'addresses', 'statuses']));
+        return view('orders.create', compact(['users', 'regions', 'deliveries', 'statuses']));
     }
 
     public function store_order(OrderCreateRequest $request)
