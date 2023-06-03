@@ -24,6 +24,17 @@ class Order extends Model
         // Add more columns as needed
     ];
 
+    public function product()
+    {
+        return $this->hasOne(OrderProduct::class, 'order_id', 'id');
+
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
     // Define relationships, such as hasOne, hasMany, belongsTo, etc.
 
 }

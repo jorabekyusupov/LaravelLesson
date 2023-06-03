@@ -71,7 +71,7 @@ class UserController extends Controller
     public function store_order(OrderCreateRequest $request)
     {
         $data = $request->validated();
-        dd($data);
+
         $order = [
             'name'=>$data['name'],
             'user_id'=>$data['user_id'],
