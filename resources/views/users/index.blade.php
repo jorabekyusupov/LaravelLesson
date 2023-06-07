@@ -8,7 +8,7 @@
             <div class="d-flex align-items-center justify-content-between">
                 <h1>Users</h1>
                 <div class="col-5">
-                    <form action="{{route('users.search')}}" method="get" class="d-flex align-items-center justify-content-between" style="border: 1px solid white; padding: 10px" >
+                    <form action="{{route('users.index')}}" method="get" class="d-flex align-items-center justify-content-between" style="border: 1px solid white; padding: 10px" >
                         <div class="form-group">
 
                             <input type="text" name="query" class="form-control" placeholder="Search">
