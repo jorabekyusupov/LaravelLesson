@@ -39,5 +39,5 @@ Route::post('/regions/store', [\App\Http\Controllers\RegionController::class, 's
 Route::delete('/regions/delete/{id}', [\App\Http\Controllers\RegionController::class,'delete'])->name('regions.delete');
 Route::get('/regions/edit/{id}', [\App\Http\Controllers\RegionController::class,'edit'])->name('regions.edit');
 Route::put('/regions/update/{id}', [\App\Http\Controllers\RegionController::class,'update'])->name('regions.update');
-
+Route::get('users/search',[UserController::class,'search'])->name('users.search');
 Route::get( '/order/products', [\App\Http\Controllers\OrderController::class, 'OrderProductsIndex'])->name('orders.products');

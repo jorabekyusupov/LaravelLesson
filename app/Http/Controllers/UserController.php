@@ -109,4 +109,14 @@ class UserController extends Controller
         return redirect()->route('users.index');
 
     }
+
+    protected function search(Request $request)
+    {
+        $search_text = $request->input('query');
+        $users = User::query()->where('firstname','LIKE', '%'.$search_text.'%')
+            ->orwhere('lastname','LIKE', '%'.$search_text.'%')
+            ->paginate(10);
+
+        return view('users.search', compact('users'));
+    }
 }

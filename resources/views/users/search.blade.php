@@ -48,14 +48,14 @@
                         <td>{{$user->created_at}}</td>
                         <td>{{$user->updated_at}}</td>
                         <td> <div class="d-flex align-items-center m-1"><a href="{{route('users.edit', ['id'=>$user->id])}}" class="btn btn-primary">Edit</a>
-                            <form action="{{route('users.delete', ['id'=>$user->id])}}" method="post">
-                                @method('delete')
-                                @csrf
-                                <button class="btn btn-primary m-1" type="submit">
-                                    Delete
-                                </button>
+                                <form action="{{route('users.delete', ['id'=>$user->id])}}" method="post">
+                                    @method('delete')
+                                    @csrf
+                                    <button class="btn btn-primary m-1" type="submit">
+                                        Delete
+                                    </button>
 
-                            </form>
+                                </form>
 
                             </div>
                         </td>
@@ -72,3 +72,4 @@
         </div>
     </div>
 @endsection
+
