@@ -13,8 +13,8 @@ class UserController extends Controller
 {
 
     /* products
-     *  1. Product lar royhatini Categories va storesga boglab chiqarish tovor id, product, category, price, quantity, magazin nomi
-     *  2. product nomi category nomi  stores  nomi bo'yicha qidirish public papkani ichiga qaralsin
+     *  1. Product lar royhatini Categories va storesga boglab chiqarish tovor id, products, category, price, quantity, magazin nomi
+     *  2. products nomi category nomi  stores  nomi bo'yicha qidirish public papkani ichiga qaralsin
      *  3. narx va quantity boyicha tartiblash select 2 tablov qimmatlari va arzonlari, quantity uchun koplari va ozlarii  public papkani ichiga qaralsin
      *  4. productni id bo'yicha qidirish
      *  5. soni boyicha op kelish 10,20,50,100 ta public papkani ichiga qaralsin

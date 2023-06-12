@@ -41,3 +41,7 @@ Route::get('/regions/edit/{id}', [\App\Http\Controllers\RegionController::class,
 Route::put('/regions/update/{id}', [\App\Http\Controllers\RegionController::class,'update'])->name('regions.update');
 Route::get('users/search',[UserController::class,'search'])->name('users.search');
 Route::get( '/order/products', [\App\Http\Controllers\OrderController::class, 'OrderProductsIndex'])->name('orders.products');
+Route::get('/products/{sort?}', [\App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
+Route::get('/products/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
+Route::get('/products/', [\App\Http\Controllers\ProductController::class, 'page'])->name('products.page');
+
