@@ -59,8 +59,8 @@
                 {!! $products->links() !!}
             </div>
             <div>
-            <form action="{{ route('products.page') }}" method="GET">
-                <select name="perPage" onchange="this.form.submit()">
+            <form action="{{ route('products.index') }}" method="GET">
+                <select name="rows" onchange="this.form.submit()">
                     <option value="10" {{ $products->perPage() == 10 ? 'selected' : '' }}>10 per page</option>
                     <option value="15" {{ $products->perPage() == 15 ? 'selected' : '' }}>15 per page</option>
                     <option value="20" {{ $products->perPage() == 20 ? 'selected' : '' }}>20 per page</option>
